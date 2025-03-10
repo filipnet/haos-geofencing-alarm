@@ -1,9 +1,9 @@
-![Home Assistant Compatibility](<https://img.shields.io/badge/Home%20Assistant-Compatible-brightgreen>)
+![Home Assistant Compatibility](https://img.shields.io/badge/Home%20Assistant-Compatible-brightgreen)
 ![Geofencing](https://img.shields.io/badge/Geofencing-Required-blue)
 
 # HAOS Geofencing Alarm
-<img src="images/example_android.png" alt="Android Example" width="300" align="right" hspace="30" vspace="20"/>
-A fully automated Home Assistant alarm system based on geofencing, designed for two or more users. The system uses Home Assistant for automation and location tracking. It integrates with geofencing tools like OwnTracks or GPSLogger. The alarm activates when everyone leaves home and deactivates when someone returns. It includes a manual override for cases like guests staying over or children being home alone.
+<img src="images/example_android.png" alt="Android Example" width="300" style="float: right; margin: 20px 30px 20px 30px;"/>
+A fully automated Home Assistant alarm system based on geofencing. It is designed for two or more users. The system uses Home Assistant for automation and location tracking. It integrates with geofencing tools like OwnTracks or GPSLogger. The alarm activates when everyone leaves home and deactivates when someone returns. It includes a manual override for cases like guests staying over or children being home alone.
 
 ## Table of Contents
 
@@ -30,11 +30,11 @@ A fully automated Home Assistant alarm system based on geofencing, designed for 
 ## Features
 <img src="images/logo.webp" alt="Logo" width="300" align="right" hspace="30" vspace="20"/>
 
-- Fully automated arming & disarming based on presence
-- No external integrations (works with native Home Assistant)
-- Manual override to enable or disable the alarm independently
-- Scalable for multiple household members
-- Minimal false triggers, only updates on actual status changes
+- Fully automated arming & disarming based on presence.
+- No external integrations (works with native Home Assistant).
+- Manual override to enable or disable the alarm independently.
+- Scalable for multiple household members.
+- Minimal false triggers, only updates on actual status changes.
 
 ## Requirements
 
@@ -47,7 +47,6 @@ The Home Assistant Companion App allows for presence detection using both GPS an
 
 ### Manual Override
 
-- An `input_boolean` toggle (`input_boolean.intrusion_alert`) to manually control the alarm.
 
 Useful for cases like:
 - Kids staying home alone
@@ -150,4 +149,4 @@ Contributions to enhance this project are welcome! If you have suggestions, impr
 
 ## License
 
-This project is licensed under the terms of the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the terms of the BSD 3-Clause License. See the [LICENSE](LICENSE) file for more details.
