@@ -1,0 +1,18 @@
+type: grid
+cards:
+  - type: heading
+    heading: Security Camera Alert
+    heading_style: title
+    icon: mdi:alarm-light-outline
+  - type: tile
+    entity: input_boolean.intrusion_alert
+    name: Intrusion Alert
+    show_entity_picture: false
+    vertical: true
+    hide_state: false
+    grid_options:
+      columns: full
+    icon_tap_action:
+      action: more-info
+    tap_action:
+      action: more-info

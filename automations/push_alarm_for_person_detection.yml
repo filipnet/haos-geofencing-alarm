@@ -1,0 +1,38 @@
+alias: Push Alarm for Person Detection
+description: >-
+  Sends a notification to the "Break-In Alarm" channel when a person is detected
+  by a camera and no one is at home.
+triggers:
+  - entity_id:
+      - binary_sensor.cam02_person
+      - binary_sensor.cam03_person
+    to: "on"
+    trigger: state
+conditions:
+  - condition: state
+    entity_id: input_boolean.intrusion_alert
+    state: "on"
+actions:
+  - data:
+      title: Intrusion Alert
+      message: Person detected by {{ trigger.entity_id }}!
+      data:
+        channel: Break-In Alarm
+        importance: high
+        ttl: 0
+        priority: high
+        notification_icon: mdi:alarm-light
+        color: red
+    action: notify.mobile_app_device_1
+  - data:
+      title: Intrusion Alert
+      message: Person detected by {{ trigger.entity_id }}!
+      data:
+        channel: Break-In Alarm
+        importance: high
+        ttl: 0
+        priority: high
+        notification_icon: mdi:alarm-light
+        color: red
+    action: notify.mobile_app_device_2
+mode: single

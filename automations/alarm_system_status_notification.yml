@@ -1,0 +1,91 @@
+alias: Alarm System Status Notification
+description: >-
+  Sends a notification when the alarm system is armed (both persons absent) and
+  another notification when it is disarmed (at least one person present).
+triggers:
+  - entity_id:
+      - person.max_mustermann
+    from: null
+    to: home
+    trigger: state
+  - entity_id:
+      - person.erika_mustermann
+    from: null
+    to: home
+    trigger: state
+  - entity_id:
+      - person.max_mustermann
+    from: home
+    to: null
+    trigger: state
+  - entity_id:
+      - person.erika_mustermann
+    from: home
+    to: null
+    trigger: state
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: not
+            conditions:
+              - condition: state
+                entity_id: person.max_mustermann
+                state: home
+          - condition: not
+            conditions:
+              - condition: state
+                entity_id: person.erika_mustermann
+                state: home
+          - condition: state
+            entity_id: input_boolean.intrusion_alert
+            state: "off"
+        sequence:
+          - data:
+              title: Alarm Armed
+              message: The alarm system is now active.
+              data:
+                notification_icon: mdi:lock
+            action: notify.mobile_app_device_1
+          - data:
+              title: Alarm Armed
+              message: The alarm system is now active.
+              data:
+                notification_icon: mdi:lock
+            enabled: false
+            action: notify.mobile_app_device_2
+          - target:
+              entity_id: input_boolean.intrusion_alert
+            action: input_boolean.turn_on
+            data: {}
+      - conditions:
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: person.max_mustermann
+                state: home
+              - condition: state
+                entity_id: person.erika_mustermann
+                state: home
+          - condition: state
+            entity_id: input_boolean.intrusion_alert
+            state: "on"
+        sequence:
+          - data:
+              title: Alarm Disarmed
+              message: The alarm system is now deactivated.
+              data:
+                notification_icon: mdi:lock-open
+            action: notify.mobile_app_device_1
+          - data:
+              title: Alarm Disarmed
+              message: The alarm system is now deactivated.
+              data:
+                notification_icon: mdi:lock-open
+            enabled: false
+            action: notify.mobile_app_device_2
+          - target:
+              entity_id: input_boolean.intrusion_alert
+            action: input_boolean.turn_off
+            data: {}
+mode: single
