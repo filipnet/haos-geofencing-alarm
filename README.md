@@ -2,11 +2,10 @@
 ![Geofencing](https://img.shields.io/badge/Geofencing-Required-blue)
 
 # HAOS Geofencing Alarm
-
+<img src="images/example_android.png" alt="Android Example" width="300" align="right" hspace="30" vspace="20"/>
 A fully automated Home Assistant alarm system based on geofencing, designed for two or more users. The system uses Home Assistant for automation and location tracking. It integrates with geofencing tools like OwnTracks or GPSLogger. The alarm activates when everyone leaves home and deactivates when someone returns. It includes a manual override for cases like guests staying over or children being home alone.
 
 ## Table of Contents
-<img src="images/logo.webp" alt="Logo" width="300" align="right" hspace="30" vspace="20"/>
 
 - [HAOS Geofencing Alarm](#haos-geofencing-alarm)
   - [Table of Contents](#table-of-contents)
@@ -20,14 +19,16 @@ A fully automated Home Assistant alarm system based on geofencing, designed for 
     - [Modify Manual Override Behavior](#modify-manual-override-behavior)
     - [Customize Notifications](#customize-notifications)
   - [Intrusion Alert Helper](#intrusion-alert-helper)
-  - [Automations](#automations)
+  - [Automation](#automation)
     - [Alarm System Status Notification](#alarm-system-status-notification)
     - [Push Alarm for Person Detection](#push-alarm-for-person-detection)
   - [Dashboard](#dashboard)
+  - [Custom Sound](#custom-sound)
   - [Contribution](#contribution)
   - [License](#license)
 
 ## Features
+<img src="images/logo.webp" alt="Logo" width="300" align="right" hspace="30" vspace="20"/>
 
 - Fully automated arming & disarming based on presence
 - No external integrations (works with native Home Assistant)
@@ -82,9 +83,9 @@ To set up the Intrusion Alert helper:
 1. Navigate to **Settings** -> **Devices and services** -> **Helpers**.
 2. Create a new helper called `input_boolean.intrusion_alert`.
 
-![Helpers Settings Page](images/helpers_settings_page.png)
+<img src="images/helpers_settings_page.png" alt="Helper settings" width="400" hspace="30" vspace="20"/>
 
-## Automations
+## Automation
 
 1. Navigate to **Settings** -> **Automations & Scenes**.
 2. Click on the **Automations** tab.
@@ -113,7 +114,36 @@ To include the `security_camera_alert.yml` file from the `automations` directory
 
 This will allow you to view the status of the Intrusion Alert and disable it if needed via the dashboard.
 
-![Intrusion Alarm Dashboard Card](images/dashboard_card_intrusion_alarm.png)
+<img src="images/dashboard_card_intrusion_alarm.png" alt="Intrusion Alarm Dashboard Card" width="400" hspace="30" vspace="20"/>
+
+## Custom Sound
+
+The channel is created during the first execution of the `push_alert_for_person_detection` automation and can be customized to fit your needs.
+
+To execute the script "Push Alert for Person Detection" manually, follow these steps:
+
+1. Navigate to **Settings** -> **Automations & Scenes**.
+2. Find the `Push Alert for Person Detection` automation.
+3. Click on the **Run Actions** button to test the script.
+
+This will create the notification channel if it doesn't already exist.
+
+To customize the alarm sound, follow these steps:
+
+1. Copy your custom sounds (e.g., inside the `sounds` directory) to your device's internal storage under `Notifications`.
+2. Open the Home Assistant Companion app and navigate to **Settings** -> **Notifications** -> **Notification Channels**.
+3. Select the **Break-in Alarm** channel.
+
+<img src="images/custom_sound_select_channel.png" alt="Select Notification Channel" width="400" hspace="30" vspace="20"/>
+
+1. Open the **Settings** for the **Break-in Alarm** channel.
+
+<img src="images/custom_sound_settings.png" alt="Notification Channel Settings" width="400" hspace="30" vspace="20"/>
+
+1. Select your custom ringtone.
+2. Adjust the volume as needed.
+
+<img src="images/custom_sound_select_ringtone.png" alt="Select Custom Ringtone" width="400" hspace="30" vspace="20"/>
 
 ## Contribution
 Contributions to enhance this project are welcome! If you have suggestions, improvements, or bug fixes, please open an issue or submit a pull request.
